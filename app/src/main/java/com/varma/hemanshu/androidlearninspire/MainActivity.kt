@@ -3,13 +3,20 @@ package com.varma.hemanshu.androidlearninspire
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.varma.hemanshu.androidlearninspire.ui.theme.AndroidLearnInspireTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,10 +29,37 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    HomeScreen()
                 }
             }
         }
+    }
+}
+
+@Composable
+fun HomeScreen() {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .padding(all = 16.dp)
+    ) {
+        Spacer(modifier = Modifier.padding(top = 72.dp))
+        Image(
+            painter = painterResource(id = R.drawable.icon_profile),
+            contentDescription = "profile image",
+            modifier = Modifier
+                .size(72.dp)
+        )
+        Text(
+            text = stringResource(id = R.string.user_name),
+            fontSize = 24.sp,
+            modifier = Modifier.padding(top = 16.dp)
+        )
+        Text(
+            text = stringResource(id = R.string.user_bio),
+            modifier = Modifier.padding(top = 16.dp),
+            textAlign = TextAlign.Justify
+        )
     }
 }
 
@@ -39,5 +73,13 @@ fun Greeting(name: String) {
 fun DefaultPreview() {
     AndroidLearnInspireTheme {
         Greeting("Android")
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun HomeScreenPreview() {
+    AndroidLearnInspireTheme {
+        HomeScreen()
     }
 }

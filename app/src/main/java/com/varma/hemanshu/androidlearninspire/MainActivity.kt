@@ -43,7 +43,7 @@ fun HomeScreen() {
         modifier = Modifier
             .padding(all = 16.dp)
     ) {
-        Spacer(modifier = Modifier.padding(top = 72.dp))
+        Spacer(modifier = Modifier.size(72.dp))
         Image(
             painter = painterResource(id = R.drawable.icon_profile),
             contentDescription = "profile image",
@@ -59,6 +59,33 @@ fun HomeScreen() {
             text = stringResource(id = R.string.user_bio),
             modifier = Modifier.padding(top = 16.dp),
             textAlign = TextAlign.Justify
+        )
+        Spacer(modifier = Modifier.size(32.dp))
+        Footer()
+    }
+}
+
+@Composable
+fun Footer() {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.icon_facebook),
+            contentDescription = "facebook logo"
+        )
+        Image(
+            painter = painterResource(id = R.drawable.icon_whatsapp),
+            contentDescription = "whatsapp logo"
+        )
+        Image(
+            painter = painterResource(id = R.drawable.icon_twitter),
+            contentDescription = "twitter logo"
+        )
+        Image(
+            painter = painterResource(id = R.drawable.icon_youtube),
+            contentDescription = "youtube logo"
         )
     }
 }
@@ -81,5 +108,13 @@ fun DefaultPreview() {
 fun HomeScreenPreview() {
     AndroidLearnInspireTheme {
         HomeScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FooterPreview() {
+    AndroidLearnInspireTheme {
+        Footer()
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android Learn Inspire</string>
+    <string name="user_name">Dwayne Johnson</string>
+    <string name="user_bio">Dwayne Douglas Johnson, also known by his ring name The Rock, is an American-Canadian actor, producer, businessman, former football player, and former professional wrestler.</string>
 </resources>

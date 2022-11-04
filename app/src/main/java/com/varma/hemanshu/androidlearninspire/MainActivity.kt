@@ -7,20 +7,19 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.varma.hemanshu.androidlearninspire.ui.theme.AndroidLearnInspireTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,14 +49,16 @@ fun HomeScreen() {
             .fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.icon_profile),
-            contentDescription = "profile image",
             modifier = Modifier
-                .size(72.dp)
+                .clip(CircleShape)
+                .size(144.dp),
+            painter = painterResource(id = R.drawable.blackadam),
+            contentDescription = "profile image",
+            contentScale = ContentScale.Crop
         )
         Text(
             text = stringResource(id = R.string.user_name),
-            fontSize = 24.sp,
+            style = MaterialTheme.typography.h4,
             modifier = Modifier.padding(top = 16.dp)
         )
         Text(
@@ -65,7 +66,6 @@ fun HomeScreen() {
             modifier = Modifier.padding(top = 16.dp),
             textAlign = TextAlign.Justify
         )
-        Spacer(modifier = Modifier.size(32.dp))
         Footer()
     }
 }
@@ -74,7 +74,9 @@ fun HomeScreen() {
 fun Footer() {
     val context = LocalContext.current
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 32.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         Image(
